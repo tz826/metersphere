@@ -548,6 +548,8 @@ public class TestPlanReportService {
         UserDTO userDTO = userService.getUserDTO(creator);
 
         Map paramMap = new HashMap();
+        paramMap.put("triggerMode", testPlanReport.getTriggerMode());
+        paramMap.put("reportId", testPlanReport.getId());
         paramMap.put("type", "testPlan");
         paramMap.put("url", url);
         paramMap.put("projectId", projectId);

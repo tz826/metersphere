@@ -46,21 +46,28 @@ public class TestPlanReportController {
         return testPlanReportService.getMetric(planId);
     }
 
+    //region zhangzhi定制
+    @GetMapping("/detail/{reportId}")
+    public TestPlanReport getTestPlanReport(@PathVariable String reportId) {
+        return testPlanReportService.getTestPlanReport(reportId);
+    }
+    //endregion
+
     @GetMapping("/db/{reportId}")
     public TestPlanSimpleReportDTO getReport(@PathVariable String reportId) {
         return testPlanReportService.getReport(reportId);
     }
 
-    @GetMapping("/sendTask/{planId}")
-    public String sendTask(@PathVariable String planId) {
-        TestPlanReport report = testPlanReportService.getTestPlanReport(planId);
+    @GetMapping("/sendTask/{reportId}")
+    public String sendTask(@PathVariable String reportId) {
+        TestPlanReport report = testPlanReportService.getTestPlanReport(reportId);
         testPlanReportService.update(report);
         return "sucess";
     }
 
-    @GetMapping("/status/{planId}")
-    public String getStatus(@PathVariable String planId) {
-        TestPlanReport report = testPlanReportService.getTestPlanReport(planId);
+    @GetMapping("/status/{reportId}")
+    public String getStatus(@PathVariable String reportId) {
+        TestPlanReport report = testPlanReportService.getTestPlanReport(reportId);
         String status = report.getStatus();
         return status;
     }
